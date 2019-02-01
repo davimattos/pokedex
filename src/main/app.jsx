@@ -10,11 +10,9 @@ import Footer from '../common/template/footer'
 class App extends Component {
   render() {
     return (
-      <div className="wrapper">
+      <div >
         <Header />
-        <div className="content-wrapper">
-          <Dashboard />
-        </div>
+        <Dashboard />
         <Footer />
       </div>
     );

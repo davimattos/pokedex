@@ -24,11 +24,6 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'app.css'
-        }),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
         })
     ],
     module: {
@@ -37,7 +32,8 @@ module.exports = {
             use: {
                 loader: "babel-loader",
                 options: {
-                    presets: ['es2015','react']
+                    presets: ['es2015','react'],
+                    plugins: ['transform-object-rest-spread']
                 }
             },
             exclude: /node_modules/

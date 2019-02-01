@@ -1,0 +1,53 @@
+.main-header {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+.person-frame {
+    padding: 2em;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    align-content: space-between;
+}
+.busca {
+    margin: 1em;
+}
+#campo-busca {
+    padding: 0.2em;
+    border-radius: 5%;
+}
+.button-frame {
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: right;
+}
+.button-frame button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 150px;
+}
+
+.button-frame button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+@media(max-width: 425px) {
+    .logo img {
+        width: 300px;
+    }
+    .logo {
+        padding-top: 1em;
+    }
+    .person-frame {
+        max-height: 500px;
+    }
+    .button-frame {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+}
