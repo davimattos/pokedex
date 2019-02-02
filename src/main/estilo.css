@@ -13,16 +13,6 @@ body {
 	font-family: Arial, helvetica, sans-serif;
 	line-height: 1.4;
 }
-
-header {
-	width: 100%;
+.content-header {
+    margin: 1em;
 }
-
-.wrapper {
-	padding: 5%;
-}
-
-.content-wrapper {
-	padding-left: 5%;
-	padding-right: 5%;
-} 

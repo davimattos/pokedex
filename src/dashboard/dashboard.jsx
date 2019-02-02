@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 
-import { getList } from './dashboardActions'
+import ContentHeader from '../common/template/contentHeader'
+import { getList, getStats } from './dashboardActions'
 
 class Dashboard extends Component {
 
@@ -10,20 +12,17 @@ class Dashboard extends Component {
         this.props.getList()
     }
 
+    getNextAndPreviousList(url) {
+        this.props.getList(url)
+    }
+
     renderRows() {
         const list = this.props.list.results || []
         return list.map((pk, i ) => (
-            <a href={"/#/"} key={pk.url}>
-                <p>{pk.name}</p>
-            </a>
+            <Link to="/pokemonStats" key={pk.url} onClick={() => this.props.getStats(pk.url)}>
+                    <p>{pk.name}</p>
+            </Link>
         ))
-    }
-
-    onClickPrevious() {
-        const { steps, currentStep } = this.state;
-        this.setState({
-          currentStep: currentStep - 1,
-        });
     }
     
     render(){
@@ -31,14 +30,17 @@ class Dashboard extends Component {
         const previous = this.props.list.previous
         return (
             <div>
+                <ContentHeader />
                 <div className="person-frame">
                     {this.renderRows()}
                 </div>
                 <div className="button-frame">
                     {previous &&
-                    <button type="submit" onClick={() => this.props.getList(previous)}>Previous</button>
+                    <button type="submit" onClick={() => this.getNextAndPreviousList(previous)}>Previous</button>
                     }
-                    <button type="submit" onClick={() => this.props.getList(next)}>Next</button>
+                    {next &&
+                    <button type="submit" onClick={() => this.getNextAndPreviousList(next)}>Next</button>
+                    }
                 </div>
             </div>
 
@@ -47,6 +49,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({list: state.dashboard.list})
-const mapDispatchToProps = dispatch => bindActionCreators({getList}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({getList, getStats}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

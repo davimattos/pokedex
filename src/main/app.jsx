@@ -4,16 +4,16 @@ import './estilo.css'
 import React, { Component } from "react"
 
 import Header from '../common/template/header'
-import Dashboard from '../dashboard/dashboard'
-import Footer from '../common/template/footer'
+import Routes from './routes'
+import Pokemon from '../pokemon/pokemonStats'
 
 class App extends Component {
   render() {
     return (
       <div >
         <Header />
-        <Dashboard />
-        <Footer />
+        <Pokemon />
+        {/* <Routes /> */}
       </div>
     );
   }

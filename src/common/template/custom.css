@@ -4,16 +4,23 @@
     flex-flow: row wrap;
 }
 .person-frame {
-    padding: 2em;
     display: flex;
     flex-flow: column wrap;
     align-items: flex-start;
     align-content: space-between;
+    padding: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
 }
-.busca {
-    margin: 1em;
+.title-header {
+    display: flex;
+    justify-content: center;
 }
-#campo-busca {
+.campo-busca {
+    display: flex;
+    justify-content: center;
+}
+#busca {
     padding: 0.2em;
     border-radius: 5%;
 }
@@ -30,24 +37,91 @@
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    width: 150px;
+    width: 120px;
 }
-
+.logo {
+    padding-top: 1em;
+}
+.button-frame {
+    margin-left: 2em;
+    margin-right: 2em;
+}
 .button-frame button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+/*PAGINA POKEMON*/
+
+.pokemon-frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
 @media(max-width: 425px) {
+    .person-frame {
+        height: 1320px;
+    }
     .logo img {
+        width: 200px;
+    }
+    #busca{
+        width: 250px;
+    }
+}
+
+@media(min-width: 520px) {
+    .person-frame {
+        height: 920px;
+    }
+    .logo img {
+        width: 220px;
+    }
+    #busca{
         width: 300px;
     }
-    .logo {
-        padding-top: 1em;
-    }
+}
+
+@media(min-width: 768px) {
     .person-frame {
-        max-height: 500px;
+        height: 720px;
+        margin-left: 5%;
+        margin-right: 5%;
     }
-    .button-frame {
-        margin-left: 2em;
-        margin-right: 2em;
+    .logo img {
+        max-width: 260px;
+    }
+    #busca{
+        width: 350px;
+    }
+
+}
+
+@media(min-width: 1024px) {
+    .person-frame {
+        height: 580px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .logo img {
+        max-width: 500px;
+    }
+    #busca{
+        width: 400px;
+    }
+}
+
+@media(min-width: 2560px) {
+    .person-frame {
+        height: 320px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .logo img {
+        max-width: 500px;
+    }
+    #busca{
+        width: 400px;
     }
 }
