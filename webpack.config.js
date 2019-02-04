@@ -1,9 +1,8 @@
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const path = require('path')
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/index.jsx',
     output: {
         filename: 'app.js',
@@ -12,9 +11,7 @@ module.exports = {
     resolve: {
         extensions: ['*', '.js', '.jsx'],
         alias: {
-            modules: __dirname + '/node_modules',
-            jquery: 'modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js',
-            bootstrap: 'modules/admin-lte/bootstrap/js/bootstrap.js'
+            modules: __dirname + '/node_modules'
         }
     },
     devServer: {
@@ -24,6 +21,11 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'app.css'
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
         })
     ],
     module: {
