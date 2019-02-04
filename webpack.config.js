@@ -1,12 +1,13 @@
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebPackPlugin = require("html-webpack-plugin")
 
 module.exports = {
     mode: 'production',
     entry: './src/index.jsx',
     output: {
         filename: 'app.js',
-        path: __dirname + '/public'
+        path: __dirname + '/dist'
     },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
@@ -26,19 +27,23 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
+        }),
+        new HtmlWebPackPlugin({
+            template: "./public/index.html",
+            filename: "./index.html"
         })
     ],
     module: {
         rules: [{
             test: /.js[x]?$/,
+            exclude: /node_modules/,
             use: {
                 loader: "babel-loader",
                 options: {
                     presets: ['es2015','react'],
                     plugins: ['transform-object-rest-spread']
                 }
-            },
-            exclude: /node_modules/
+            }
         },{
             test: /\.css$/,
             use: [
@@ -48,6 +53,15 @@ module.exports = {
         },{
             test: /\.(png|svg|jpg|gif)$/,
             use: ['file-loader']
+        },{
+            test: /\.html$/,
+                use: [
+                {
+                    loader: "html-loader",
+                    options: { minimize: true }
+                }
+            ]
+
         }]
     }
 }
