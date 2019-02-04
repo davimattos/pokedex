@@ -29,7 +29,7 @@
     justify-content: space-evenly;
     justify-items: right;
 }
-.button-frame button {
+#button-custom {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -51,15 +51,54 @@
 }
 
 /*PAGINA POKEMON*/
-
-.pokemon-frame {
+.pokemon-frame h1{
     display: flex;
-    flex-direction: column;
     justify-content: center;
 }
 
+.pokemon-images{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.pokemon-images p {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.pokemon-stats {
+    display: flex;;
+    justify-content: center;
+}
+
+.pokemon-types {
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon-abilities {
+    display: flex;
+    justify-content: center;
+}
+.pokemon-general {
+    margin-top: 2em;
+}
+
+.pokemon-button {
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon-button button{
+    margin-top: 2em;
+}
 
 @media(max-width: 425px) {
+    .title-header h2{
+        font-size: 1em;
+    }
     .person-frame {
         height: 1320px;
     }
@@ -69,9 +108,16 @@
     #busca{
         width: 250px;
     }
+    .pokemon-frame h1 {
+        font-size: 1.5em;
+    }
+    .pokemon-images img{
+        width: 50px;
+        height: 50px;
+    }
 }
 
-@media(min-width: 520px) {
+@media(min-width: 425px) {
     .person-frame {
         height: 920px;
     }
@@ -81,9 +127,19 @@
     #busca{
         width: 300px;
     }
+    .pokemon-frame h1 {
+        font-size: 2em;
+    }
+    .pokemon-images img{
+        width: 100px;
+        height: 100px;
+    }
 }
 
 @media(min-width: 768px) {
+    .title-header h2{
+        font-size: 1.5em;
+    }
     .person-frame {
         height: 720px;
         margin-left: 5%;
@@ -95,10 +151,28 @@
     #busca{
         width: 350px;
     }
-
+    .pokemon-frame h1 {
+        font-size: 2.5em;
+    }
+    .pokemon-images img{
+        width: 150px;
+        height: 150px;
+    }
+    .pokemon-stats {
+        font-size: 1.3em;
+    }
+    .pokemon-types {
+        font-size: 1.3em;
+    }
+    .pokemon-abilities {
+        font-size: 1.3em;
+    }
 }
 
 @media(min-width: 1024px) {
+    .title-header h2{
+        font-size: 2em;
+    }
     .person-frame {
         height: 580px;
         margin-left: 10%;
@@ -110,6 +184,15 @@
     #busca{
         width: 400px;
     }
+    .pokemon-stats {
+        font-size: 1.5em;
+    }
+    .pokemon-types {
+        font-size: 1.5em;
+    }
+    .pokemon-abilities {
+        font-size: 1.5em;
+    }
 }
 
 @media(min-width: 2560px) {
@@ -119,9 +202,12 @@
         margin-right: 10%;
     }
     .logo img {
-        max-width: 500px;
+        width: 400px;
     }
     #busca{
         width: 400px;
+    }
+    .pokemon-frame h1 {
+        font-size: 3em;
     }
 }

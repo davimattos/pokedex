@@ -9,7 +9,7 @@ export function getList(URL = BASE_URL_LIST) {
     }
 }
 
-const BASE_URL_STATS = 'https://pokeapi.co/api/v2/pokemon/1/'
+const BASE_URL_STATS = 'https://pokeapi.co/api/v2/pokemon/45/'
 
 export function getStats(URL = BASE_URL_STATS) {
     return dispatch => {

@@ -18,9 +18,9 @@ class Dashboard extends Component {
 
     renderRows() {
         const list = this.props.list.results || []
-        return list.map((pk, i ) => (
-            <Link to="/pokemonStats" key={pk.url} onClick={() => this.props.getStats(pk.url)}>
-                    <p>{pk.name}</p>
+        return list.map((pokemon, index ) => (
+            <Link to="/pokemonStats" key={pokemon.url} onClick={() => this.props.getStats(pokemon.url)}>
+                    <p>{pokemon.name}</p>
             </Link>
         ))
     }
@@ -36,10 +36,10 @@ class Dashboard extends Component {
                 </div>
                 <div className="button-frame">
                     {previous &&
-                    <button type="submit" onClick={() => this.getNextAndPreviousList(previous)}>Previous</button>
+                    <button id="button-custom" type="submit" onClick={() => this.getNextAndPreviousList(previous)}>Previous</button>
                     }
                     {next &&
-                    <button type="submit" onClick={() => this.getNextAndPreviousList(next)}>Next</button>
+                    <button id="button-custom" type="submit" onClick={() => this.getNextAndPreviousList(next)}>Next</button>
                     }
                 </div>
             </div>

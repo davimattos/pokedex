@@ -1,22 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import { getStats } from '../dashboard/dashboardActions'
+import { Link } from 'react-router-dom'
 
 class PokemonStats extends Component {
-
-    componentWillMount() {
-        this.props.getStats()
-    }
 
     renderImages() {
         const sprites = this.props.stats.sprites || []
         return (
             <div className="pokemon-frame">
+                <h1>Pokemon Stats</h1>
                 {sprites.back_default &&
-                    <div>
-                        <h1>Pokemon Stats</h1>
+                    <div className="pokemon-images">
                         <p>Male Default/Shiny</p>
                         <img src={sprites.back_default} />
                         <img src={sprites.front_default} />
@@ -26,7 +20,7 @@ class PokemonStats extends Component {
                 }
                 
                 {sprites.back_female &&
-                    <div>
+                    <div className="pokemon-images">
                         <p>Female Default/Shiny</p>
                         <img src={sprites.back_female} />
                         <img src={sprites.front_female} />
@@ -44,55 +38,58 @@ class PokemonStats extends Component {
         const name = this.props.stats.name
         return (
             <div>
-                <span><strong>Name:</strong> {name}</span>
-                <span><strong>Weight:</strong> {weight}</span>
-                <span><strong>Height:</strong> {height}</span>                
+            <div className="pokemon-stats">
+                <span><strong>Name: </strong>{name}</span>
             </div>
+            <div className="pokemon-stats">
+               <span><strong>Weight: </strong>{weight}</span>
+            </div>
+            <div className="pokemon-stats">
+                <span><strong>Height: </strong>{height}</span> 
+            </div>
+            </div>         
         )
     }
 
     renderTypes(){
         const typesList = this.props.stats.types || []
-        const findTypes = typesList.map(e => e.type)
+        const findTypes = types => types.type
+        const type = type =>  [].concat(type.name,',')
+        const result = typesList.map(findTypes).map(type)
         return (
-            <div>
-                {
-                    findTypes.map((typeEl, index) => (
-                        <span key={typeEl.url}><strong>Type:</strong> {typeEl.name}</span>
-                    ))
-                }
+            <div className="pokemon-types">
+                <span><strong>Types: </strong>{result}</span>
             </div>
         )
     }
 
     renderAbilities(){
         const abilitiesList = this.props.stats.abilities || []
-        const findAbilities = abilitiesList.map(e => e.ability)
+        const findAbilities = abilities => abilities.ability
+        const ability = ability => [].concat(ability.name, ',')
+        const result  = abilitiesList.map(findAbilities).map(ability)
         return (
-            <div>
-                {
-                    findAbilities.map(abilityEl => (
-                        <span key={abilityEl.url}><strong>Ability:</strong> {abilityEl.name}</span>
-                    ))
-                }                
+            <div className="pokemon-abilities">
+                <span><strong>Ability: </strong>{result}</span>
             </div>
         )
     }
 
     render() {
         return (
-            <div>
+            <div className="pokemon-general">
                 {this.renderImages()}
                 {this.renderStats()}
                 {this.renderTypes()}
                 {this.renderAbilities()}
+                <Link to="/" className="pokemon-button">
+                    <button type="submit" id="button-custom">Voltar</button>
+                </Link>
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({stats: state.dashboard.stats})
-// apagar dispath e voltar as rotas normais
-const mapDispatchToProps = dispatch => bindActionCreators({ getStats}, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(PokemonStats)
+export default connect(mapStateToProps)(PokemonStats)
